@@ -1,0 +1,18 @@
+Um site que mostra anúncios de carro com página principal (com banners, filtros, barra de pesquisa e os anúncios destaques)
+Disponibilizar campos de anúncios em formato de banner na homepage
+Uma URL que lista no site o anúncio do carro com todos seus dados (fotos, nome, ano, km, específicações, valor, contato vendedor)
+
+Através de um banco de dados, guardar as informações do anúncio e do vendedor
+Um anúncio é composto por:
+- Fotos, Modelo, Marca, Ano, Cor, Km e Valor do carro
+- especificações (criado com campos de pequenas frases ou especificações prontas e selecionáveis)
+- descrição (opcional)
+- anunciante (existente)
+
+Um vendedor é composto por:
+- Logo, Nome, Contato e Endereço da loja
+- Tem vários anúncios criados
+- lista de contatos de interessados com informações da pessoa + qual anúncio (formulário de contato no anúncio)
+
+Guardar os carregamentos dos anúncios em cache de 15 minutos
+Guardar o carregamento da página de anúncios em cache de 5 minutos

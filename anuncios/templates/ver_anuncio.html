@@ -1,0 +1,139 @@
+{% extends 'base_site.html' %}
+{% load static %}
+
+{% block 'body' %}
+<div class="div-info primeira">
+    <div class="info-anuncio">
+        <h4>{{ anuncio }}</h4>
+        <h6>{{ anuncio.cor }} - {{ anuncio.km_formatado }} - {{ anuncio.opcionais.all|length }} Opcionais</h6>
+        <h4>{{ anuncio.valor_formatado }}</h4>
+    </div>
+
+    <div class="info-vendedor">
+        <img src="{{ anuncio.vendedor.logo.url }}" width="150" height="50" style="margin-bottom: 5px;">
+        <h6>{{ anuncio.vendedor.contato_formatado }}</h6>
+        <h6>{{ anuncio.vendedor.endereco_cidade }}</h6>
+    </div>
+</div>
+
+<div class="div-info segunda">
+
+    <div class="imagens-anuncio">
+        <div class="imagem-principal">
+            <img id="imagem-principal" src="{{ anuncio.imagens.first.imagem.url }}" width="100%" height="100%">
+        </div>
+
+        <div class="imagens-miniatura" style="width: 100%; height: 30%;">
+            {% for imagem in anuncio.imagens.all %}
+            <div class="imagem-miniatura">
+                <img src="{{ imagem.imagem.url }}" width="80"
+                onclick="selecionaImagemMiniatura('{{ imagem.imagem.url }}')">
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="info-opcionais-descricao">
+        <div class="opcionais">
+            <h3>Opcionais</h3>
+            {% for opcional in anuncio.opcionais.all %}
+            <i class="bi bi-check" style="font-size: 24px;"></i>{{ opcional }}<br>
+            {% endfor %}
+        </div>
+
+        <div class="descricao">
+            <h3>Descrição</h3>
+            <p>{{ anuncio.descricao }}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block 'head' %}
+<script src="{% static 'general/js/ver_anuncio.js' %}"></script>
+
+<style>
+    body {
+        background-color: #C5CFD9;
+    }
+
+    .div-info {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        margin: 5px;
+        background-color: #C5CFD9;
+    }
+
+    .div-info.primeira div {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 1rem;
+        padding: 0px 1rem 1rem 1rem;
+    }
+
+    .div-info.segunda {
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+    }
+
+    .imagens-anuncio {
+        width: 50%;
+        margin-right: 5px;
+    }
+
+    .imagens-miniatura {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        margin-top: 1rem;
+    }
+
+    .imagem-principal {
+        width: 100%;
+        height: 70%;
+    }
+
+    .imagem-miniatura {
+        padding: 2px;
+    }
+
+    img {
+        border-radius: 0.25rem;
+    }
+
+    .info-opcionais-descricao {
+        width: 50%;
+    }
+
+    .imagens-anuncio, .div-info.primeira, .opcionais, .descricao {
+         border-radius: 15px;
+         padding: 15px;
+         background-color: #212529;
+         color: white;
+    }
+
+    .descricao {
+        margin-top: 5px;
+    }
+
+    @media only screen and (max-width: 600px) {
+        .div-info {
+            flex-direction: column;
+        }
+
+        .imagens-anuncio {
+            width: 100%;
+        }
+
+        .info-opcionais-descricao {
+            margin-top: 5px;
+            width: 100%;
+        }
+    }
+</style>
+{% endblock %}
