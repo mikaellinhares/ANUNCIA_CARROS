@@ -3,7 +3,7 @@ from vendedores.models import Vendedor
 import locale
 
 
-locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
+locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
 
 
 class TipoVeiculo(models.Model):
