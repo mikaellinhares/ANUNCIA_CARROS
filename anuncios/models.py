@@ -1,9 +1,5 @@
 from django.db import models
 from vendedores.models import Vendedor
-import locale
-
-
-locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
 
 
 class TipoVeiculo(models.Model):
@@ -72,7 +68,7 @@ class Anuncio(models.Model):
         return f'{self.marca} {self.modelo} {self.ano}'
 
     def valor_formatado(self):
-        return locale.currency(self.valor, grouping=True, symbol=True)
+        return f'R$ {self.valor:_.2f}'.replace('.', ',').replace('_', '.')
 
     def km_formatado(self):
         return f'{self.quilometragem:_.0f} Km'.replace('_', '.')
